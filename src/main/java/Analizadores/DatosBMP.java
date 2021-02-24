@@ -20,7 +20,7 @@ public class DatosBMP extends Datos{
     public void ingresarDatos(String datos, int dia){
         /** Método que transforma y asigna datos a los atributos*/
         
-        this.valor_bmp = Integer.parseInt(datos);
+        this.valor_bmp = Integer.parseInt(datos.trim());
         this.dia = dia;
     }
 }

@@ -5,11 +5,11 @@ import Estructuras_de_Datos.*;
  */
 public class RegistroSueno{
     /** Atributos de la Clase RegistroSueño*/
-    Dipolo cola_sueno;
+    Dipolo cola_sueno = new Dipolo();
     
     public void asignarDatos(BloqueSueno bloque) throws Exception{
         /** Método que transforma y asigna datos a los atributos*/
-        int dia_inicio = Integer.parseInt(bloque.datos_dia[0]);
+        int dia_inicio = Integer.parseInt(bloque.datos_dia[0].trim());
         
         for (int i = 0; i < bloque.getSize(); i++){
             DatosSueno nuevo_sueno = new DatosSueno();

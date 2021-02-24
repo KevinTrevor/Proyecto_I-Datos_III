@@ -25,11 +25,11 @@ public class Dipolo {
     }
     
     public boolean esVacio(){
-        return frente == null;
+        return this.frente == null;
     }
     
     public boolean estaLleno(){
-        return size == limite;
+        return this.size == this.limite;
     }
     
     public void encolarFondo(DatosSueno info) throws Exception{
@@ -37,15 +37,15 @@ public class Dipolo {
             Nodo nuevo_nodo = new Nodo();
             nuevo_nodo.ingresar(info);
             if (!esVacio()){
-                fondo.siguiente = nuevo_nodo;
-                fondo = fondo.siguiente;
+                this.fondo.siguiente = nuevo_nodo;
+                this.fondo = this.fondo.siguiente;
                 
             }
             else{
-                frente = nuevo_nodo;
-                fondo = frente;
+                this.frente = nuevo_nodo;
+                this.fondo = this.frente;
             }
-            size++;
+            this.size++;
         }
         else{
             throw new Exception("Dipolo lleno");
@@ -57,15 +57,15 @@ public class Dipolo {
             Nodo nuevo_nodo = new Nodo();
             nuevo_nodo.ingresar(info);
             if (!esVacio()){
-                nuevo_nodo.siguiente = frente;
-                frente = nuevo_nodo;
+                nuevo_nodo.siguiente = this.frente;
+                this.frente = nuevo_nodo;
                
             }
             else{
-                frente = nuevo_nodo;
-                fondo = frente;
+                this.frente = nuevo_nodo;
+                this.fondo = frente;
             }
-            size++;
+            this.size++;
         }
         else{
             throw new Exception("Dipolo lleno");
@@ -77,15 +77,15 @@ public class Dipolo {
             Nodo nuevo_nodo = new Nodo();
             nuevo_nodo.ingresar(info);
             if (!esVacio()){
-                fondo.siguiente = nuevo_nodo;
-                fondo = fondo.siguiente;
+                this.fondo.siguiente = nuevo_nodo;
+                this.fondo = fondo.siguiente;
                 
             }
             else{
-                frente = nuevo_nodo;
-                fondo = frente;
+                this.frente = nuevo_nodo;
+                this.fondo = this.frente;
             }
-            size++;
+            this.size++;
         }
         else{
             throw new Exception("Dipolo lleno");
@@ -97,15 +97,15 @@ public class Dipolo {
             Nodo nuevo_nodo = new Nodo();
             nuevo_nodo.ingresar(info);
             if (!esVacio()){
-                nuevo_nodo.siguiente = frente;
-                frente = nuevo_nodo;
+                nuevo_nodo.siguiente = this.frente;
+                this.frente = nuevo_nodo;
                
             }
             else{
-                frente = nuevo_nodo;
-                fondo = frente;
+                this.frente = nuevo_nodo;
+                this.fondo = frente;
             }
-            size++;
+            this.size++;
         }
         else{
             throw new Exception("Dipolo lleno");
@@ -117,15 +117,15 @@ public class Dipolo {
             Nodo nuevo_nodo = new Nodo();
             nuevo_nodo.ingresar(info);
             if (!esVacio()){
-                fondo.siguiente = nuevo_nodo;
-                fondo = fondo.siguiente;
+                this.fondo.siguiente = nuevo_nodo;
+                this.fondo = this.fondo.siguiente;
                 
             }
             else{
-                frente = nuevo_nodo;
-                fondo = frente;
+                this.frente = nuevo_nodo;
+                this.fondo = this.frente;
             }
-            size++;
+            this.size++;
         }
         else{
             throw new Exception("Dipolo lleno");
@@ -142,10 +142,10 @@ public class Dipolo {
                
             }
             else{
-                frente = nuevo_nodo;
-                fondo = frente;
+                this.frente = nuevo_nodo;
+                this.fondo = this.frente;
             }
-            size++;
+            this.size++;
         }
         else{
             throw new Exception("Dipolo lleno");
@@ -159,10 +159,10 @@ public class Dipolo {
             throw new Exception("Dipolo vacío");
         }
         else{
-            nodo_retorno = frente;
-            frente = frente.siguiente;
+            nodo_retorno = this.frente;
+            this.frente = this.frente.siguiente;
             nodo_retorno.siguiente = null;
-            size--;
+            this.size--;
         }
         return nodo_retorno;
     }
@@ -172,24 +172,31 @@ public class Dipolo {
         if (!esVacio()){
             if (frente == fondo){
                 nodo_retorno = fondo;
-                frente = null;
-                fondo = null;
+                this.frente = null;
+                this.fondo = null;
             }
             else{
-                Nodo nodo_auxiliar = frente;
+                Nodo nodo_auxiliar = this.frente;
                 
-                while (nodo_auxiliar.siguiente != fondo){
+                while (nodo_auxiliar.siguiente != this.fondo){
                     nodo_auxiliar = nodo_auxiliar.siguiente;
                 }
                 nodo_auxiliar.siguiente = null;
-                nodo_retorno = fondo;
-                fondo = nodo_auxiliar;
+                nodo_retorno = this.fondo;
+                this.fondo = nodo_auxiliar;
             }
-            size--;
+            this.size--;
         }
         else{
             throw new Exception("Dipolo vacío");
         }
         return nodo_retorno;
+    }
+    
+    public static void main(String[] args) throws Exception{
+        DatosBMP nuevo_valor = new DatosBMP();
+        Dipolo nuevo_dipolo = new Dipolo();
+        
+        nuevo_dipolo.encolarFondo(nuevo_valor);
     }
 }
