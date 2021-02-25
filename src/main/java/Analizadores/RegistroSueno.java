@@ -17,4 +17,10 @@ public class RegistroSueno{
             cola_sueno.encolarFondo(nuevo_sueno);
         }
     }
+    
+    public DatosSueno procesamientoSueno() throws Exception{
+        DatosSueno dia_evaluado = this.cola_sueno.desencolarFrente().info_sueno;
+        
+        return dia_evaluado;
+    }
 }
