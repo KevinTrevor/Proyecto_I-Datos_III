@@ -46,10 +46,10 @@ public class RegistroPasos{
         return seleccion;
     }
     
-    public void procesamientoPasos() throws Exception{
+    public DatosPasos procesamientoPasos() throws Exception{
         DatosPasos dia_evaluado = this.pila_pasos.desencolar().info_pasos;
         
-        if (!this.historial.esVacio()){
+        if (!this.mejor_dia.esVacio()){
             dia_evaluado.mejor_diaAnterior = seleccionar_MejorDia(dia_evaluado.pasos_dados);
         
             if (dia_evaluado.pasos_dados > this.mejor_dia.frente.info_pasos.pasos_dados){
@@ -64,6 +64,6 @@ public class RegistroPasos{
             this.mejor_dia.encolarFondo(dia_evaluado);
         }
         
-        this.historial.encolar(dia_evaluado);
+        return dia_evaluado;
     }
 }

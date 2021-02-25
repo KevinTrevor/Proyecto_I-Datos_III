@@ -5,10 +5,11 @@ package Analizadores;
  */
 public class DatosSueno extends Datos{
     /** Atributos de la Clase DatosSueño*/
-    int tiempo_inicio;
-    int tiempo_fin;
-    int tipo_de_sueño;
-    int dia;
+    public int tiempo_inicio;
+    public int tiempo_fin;
+    public int tipo_de_sueño;
+    public int dia;
+    public int tiempo_total_dormido;
     String unidad;
     
     public DatosSueno(){
@@ -17,7 +18,24 @@ public class DatosSueno extends Datos{
         this.tiempo_fin = 0;
         this.tipo_de_sueño = 0;
         this.dia = 0;
+        this.tiempo_total_dormido = 0;
         this.unidad = "sueño";
+    }
+    
+    private int calcularTiempoTotal(){
+        int resultado = 0;
+        int contador = this.tiempo_inicio;
+        
+        while (contador != this.tiempo_fin){
+            if (contador == 1439){
+                contador = 1;
+            }
+            else{
+                contador++;
+            }
+            resultado++;
+        }
+        return resultado;
     }
     
     @Override
@@ -28,6 +46,7 @@ public class DatosSueno extends Datos{
         
         this.tiempo_inicio = Integer.parseInt(datos_sueño[0]);
         this.tiempo_fin = Integer.parseInt(datos_sueño[1]);
+        this.tiempo_total_dormido = this.calcularTiempoTotal();
         this.tipo_de_sueño = Integer.parseInt(datos_sueño[2]);
         this.dia = dia;
     }
