@@ -2,7 +2,6 @@ package Analizadores;
 
 import Estructuras_de_Datos.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
