@@ -25,14 +25,4 @@ public class ServidorSueno extends Servidor{
         return retorno;
     }
     
-    public static void main(String[] args) {
-        DatosSueno nuevo_sueno = new DatosSueno();
-        nuevo_sueno.ingresarDatos("1439-180-2", 31);
-        
-        ServidorSueno prueba = new ServidorSueno();
-        
-        prueba.asignar(nuevo_sueno);
-        
-        System.out.println(prueba.tiempo_procesamiento);
-    }
 }
