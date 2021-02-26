@@ -11,10 +11,16 @@ public class Main {
     public BloqueBMP datos_BMP = new BloqueBMP();
     public BloqueSueno datos_Sueno = new BloqueSueno();
     public BloquePasos datos_Pasos = new BloquePasos();
+    
     public ProcesamientoPasos registrador_Pasos = new ProcesamientoPasos();
     public ProcesamientoBMP registrador_BMP = new ProcesamientoBMP();
     public ProcesamientoSueno registrador_Sueno = new ProcesamientoSueno();
-   
+    
+    public Cola resultado_BMP;
+    public Cola resultado_Pasos;
+    public Cola resultado_Sueno;        
+            
+            
     public void procesamiento_de_datos() throws Exception {
         Scanner scan = new Scanner(new File("./data.txt"));
         String analisis = null;
