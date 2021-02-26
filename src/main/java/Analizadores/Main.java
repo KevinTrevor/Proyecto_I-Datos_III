@@ -8,9 +8,9 @@ import java.util.Scanner;
     @author Kevin Rojas
  */
 public class Main {
-    public BloqueBMP datos_BMP = new BloqueBMP();
-    public BloqueSueno datos_Sueno = new BloqueSueno();
-    public BloquePasos datos_Pasos = new BloquePasos();
+    public BloqueBMP bloqueDatos_BMP = new BloqueBMP();
+    public BloqueSueno bloqueDatos_Sueno = new BloqueSueno();
+    public BloquePasos bloqueDatos_Pasos = new BloquePasos();
     
     public ProcesamientoPasos analizador_Pasos = new ProcesamientoPasos();
     public ProcesamientoBMP analizador_BMP = new ProcesamientoBMP();
@@ -35,18 +35,34 @@ public class Main {
                 
                 switch (analisis){
                     case "#":
-                        if (datos_Sueno.lleno == 1){
-                            this.cola_bloqueSueno.encolar(datos_Sueno);
-                            datos_Sueno.eliminarDatos();
+                        if (bloqueDatos_Sueno.lleno == 1){
+                            this.cola_bloqueSueno.encolar(bloqueDatos_Sueno);
+                            bloqueDatos_Sueno.eliminarDatos();
                         }
                         
-                        this.analizador_Pasos.asignarDatos(datos_Pasos);
-                        this.analizador_BMP.asignarDatos(datos_BMP);
+                        this.analizador_Pasos.asignarDatos(bloqueDatos_Pasos);
+                        this.analizador_BMP.asignarDatos(bloqueDatos_BMP);
+                        
                         if (this.analizador_Sueno.cola_sueno.esVacio()){
                                 this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolar().info_bloqueSueno);
                             }
-                        for (int i = 0; i < 5; i++){    
+                        for (int i = 0; i < 5; i++){
+                            if (!this.analizador_BMP.servidor1.estaDisponible()){
+                                this.resultado_BMP.encolar(this.analizador_BMP.servidor1.retirar());
+                            }    
+                            
+                            if (!this.analizador_BMP.servidor2.estaDisponible()){    
+                                this.resultado_BMP.encolar(this.analizador_BMP.servidor2.retirar());
+                            }    
+                            if (!this.analizador_BMP.servidor3.estaDisponible()){    
+                                this.resultado_BMP.encolar(this.analizador_BMP.servidor3.retirar());
+                            }
+                            
                             this.analizador_Sueno.procesarSueno();
+                            
+                            if (!this.analizador_BMP.cola_bmp.esVacio()){
+                                this.analizador_BMP.procesarBMP();
+                            }
                             
                             this.contador_global++;
                         }    
@@ -56,19 +72,25 @@ public class Main {
                         break;
                         
                     case "0 0":
+                        boolean bandera = true;
+                        this.analizador_Pasos.asignarDatos(bloqueDatos_Pasos);
                         
-                        this.analizador_Pasos.asignarDatos(datos_Pasos);
-                        
-                        while (!analizador_Pasos.cola_procesamiento.esVacio()){
-                            resultado_Pasos.encolar(this.analizador_Pasos.procesarPasos());
+                        while (bandera){
+                            if (!this.analizador_BMP.servidor1.estaDisponible()){
+                                this.resultado_BMP.encolar(this.analizador_BMP.servidor1.retirar());
+                            }    
+                            if (!this.analizador_BMP.servidor2.estaDisponible()){    
+                                this.resultado_BMP.encolar(this.analizador_BMP.servidor2.retirar());
+                            }    
+                            if (!this.analizador_BMP.servidor3.estaDisponible()){    
+                                this.resultado_BMP.encolar(this.analizador_BMP.servidor3.retirar());
+                            }
+                            
+                            this.resultado_Pasos.encolar(this.analizador_Pasos.procesarPasos());
+                            this.analizador_Sueno.procesarSueno();
+                            this.analizador_BMP.procesarBMP();
                             
                             this.contador_global++;
-                        }
-                        
-                        System.out.println("PASOS");
-                        while (!this.resultado_Pasos.esVacio()){
-                            Nodo res = this.resultado_Pasos.desencolar();
-                            System.out.println(res.info_pasos.dia +", "+res.info_pasos.pasos_dados+", "+res.info_pasos.mejor_diaAnterior);
                         }
                         break;
                 }                
@@ -76,27 +98,40 @@ public class Main {
             else{
                 switch (analisis){
                     case "BMP":
-                        
-                        this.datos_BMP.obtenerDatos(line);
+                        this.bloqueDatos_BMP.obtenerDatos(line);
                         break;
                     
                     case "SUENO":
-                        this.datos_Sueno.obtenerDatos(line);
+                        this.bloqueDatos_Sueno.obtenerDatos(line);
                         break;
                     
                     case "PASOS": 
                        
-                        this.datos_Pasos.obtenerDatos(line);
+                        this.bloqueDatos_Pasos.obtenerDatos(line);
                         break;
                 }
             }
         }
     }
     
+    public void imprimirResultado() throws Exception{
+        System.out.println("PASOS");
+        while (!this.resultado_Pasos.esVacio()){
+            Nodo res = this.resultado_Pasos.desencolar();
+            System.out.println(res.info_pasos.dia +", "+res.info_pasos.pasos_dados+", "+res.info_pasos.mejor_diaAnterior);
+        }
+        System.out.println("\nSUENO");
+        
+        System.out.println("\nBMP");
+        
+    }
+    
     public static void main(String[] args) throws Exception{
         Main app = new Main();
         
         app.procesamiento_de_datos();
+        
+        app.imprimirResultado();
     }
 }
    
