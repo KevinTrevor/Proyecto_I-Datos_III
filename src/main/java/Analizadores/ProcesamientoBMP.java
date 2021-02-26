@@ -14,6 +14,7 @@ public class ProcesamientoBMP {
     
     public ProcesamientoBMP(){
         this.cola_bmp = new Dipolo();
+        
         this.servidor1 = new ServidorBMP();
         this.servidor2 = new ServidorBMP();
         this.servidor3 = new ServidorBMP();
@@ -33,7 +34,27 @@ public class ProcesamientoBMP {
         }
     }
     
-    public void procesarBMP(){
+    public int cantidad_ciclos(){
+        int ciclos = 0;
         
+        if (this.cola_bmp.size > 3){
+            ciclos = 3;
+	}
+	else{
+            ciclos = this.cola_bmp.size;
+	}
+        return ciclos;
+    }
+    
+    public void procesarBMP(){
+        DatosBMP dato_procesar;
+        
+        for (int i = 0; i < this.cantidad_ciclos(); i++){
+            if (this.cola_bmp.frente.info_bmp.valor_bmp >= this.cola_bmp.fondo.info_bmp.valor_bmp){
+                
+            }
+            else{
+            }
+        }
     }
 }
