@@ -3,8 +3,8 @@ import Estructuras_de_Datos.*;
 /**
     @author Kevin Rojas
  */
-public class RegistroPasos{
-    /** Atributos de la Clase RegistroPasos*/
+public class ProcesamientoPasos{
+    /** Atributos de la Clase ProcesamientoPasos*/
     Cola pila_pasos = new Cola();
     Cola historial = new Cola();
     Dipolo mejor_dia = new Dipolo();

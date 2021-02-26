@@ -4,8 +4,8 @@ import Estructuras_de_Datos.*;
 /**
     @author Kevin Rojas
  */
-public class RegistroBMP {
-    /** Atributos de la Clase RegistroBMP*/
+public class ProcesamientoBMP {
+    /** Atributos de la Clase ProcesamientoBMP*/
     Dipolo cola_bmp = new Dipolo();
     Cola resultado = new Cola();
     

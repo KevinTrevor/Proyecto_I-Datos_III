@@ -3,7 +3,7 @@ import Estructuras_de_Datos.*;
 /**
     @author Kevin Rojas
  */
-public class RegistroSueno{
+public class ProcesamientoSueno{
     /** Atributos de la Clase RegistroSueño*/
     Dipolo cola_sueno = new Dipolo();
     
