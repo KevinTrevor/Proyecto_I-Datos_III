@@ -32,10 +32,10 @@ public class Cola {
         return size == limite;
     }
     
-    public void encolar(DatosSueno usuario) throws Exception{
+    public void encolar(DatosSueno datos) throws Exception{
         if(!estaLleno()){
             Nodo nuevo_nodo = new Nodo();
-            nuevo_nodo.ingresar(usuario);
+            nuevo_nodo.ingresar(datos);
             if (!esVacio()){
                 fondo.siguiente = nuevo_nodo;
                 size++;
@@ -51,10 +51,10 @@ public class Cola {
         }   
     }
     
-    public void encolar(DatosBMP usuario) throws Exception{
+    public void encolar(DatosBMP datos) throws Exception{
         if(!estaLleno()){
             Nodo nuevo_nodo = new Nodo();
-            nuevo_nodo.ingresar(usuario);
+            nuevo_nodo.ingresar(datos);
             if (!esVacio()){
                 fondo.siguiente = nuevo_nodo;
                 size++;
@@ -70,10 +70,29 @@ public class Cola {
         }   
     }
     
-    public void encolar(DatosPasos usuario) throws Exception{
+    public void encolar(DatosPasos datos) throws Exception{
         if(!estaLleno()){
             Nodo nuevo_nodo = new Nodo();
-            nuevo_nodo.ingresar(usuario);
+            nuevo_nodo.ingresar(datos);
+            if (!esVacio()){
+                fondo.siguiente = nuevo_nodo;
+                size++;
+            }
+            else{
+                frente = nuevo_nodo;
+                size++;
+            }
+            fondo = nuevo_nodo;
+        }
+        else{
+            throw new Exception("Cola Llena");  
+        }   
+    }
+    
+    public void encolar(BloqueSueno datos) throws Exception{
+        if(!estaLleno()){
+            Nodo nuevo_nodo = new Nodo();
+            nuevo_nodo.ingresar(datos);
             if (!esVacio()){
                 fondo.siguiente = nuevo_nodo;
                 size++;

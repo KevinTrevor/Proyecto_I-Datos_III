@@ -16,6 +16,7 @@ public class Nodo {
     public DatosPasos info_pasos;
     public DatosBMP info_bmp;
     public DatosSueno info_sueno;
+    public BloqueSueno info_bloqueSueno;
 
     /** Métodos de la Clase Nodo */
     public Nodo(){
@@ -27,15 +28,19 @@ public class Nodo {
     }
     
     public void ingresar(DatosBMP datos){
-        info_bmp = datos;
+        this.info_bmp = datos;
     }
     
     public void ingresar(DatosSueno datos){
-        info_sueno = datos;
+        this.info_sueno = datos;
     }
     
     public void ingresar(DatosPasos datos){
-        info_pasos = datos;
+        this.info_pasos = datos;
+    }
+    
+    public void ingresar(BloqueSueno datos){
+        this.info_bloqueSueno = datos;
     }
    
 }    
