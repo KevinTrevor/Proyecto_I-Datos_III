@@ -46,15 +46,38 @@ public class ProcesamientoBMP {
         return ciclos;
     }
     
-    public void procesarBMP(){
+    public void llenarServidor(DatosBMP dato_procesar, int num_servidor){
+        switch (num_servidor){
+                case 0:
+                    this.servidor1.asignar(dato_procesar);
+                    break;
+                
+                case 1:
+                    this.servidor2.asignar(dato_procesar);
+                    break;
+                
+                case 2:
+                    this.servidor3.asignar(dato_procesar);
+                    break;
+            }
+    }
+    
+    public void procesarBMP() throws Exception{
         DatosBMP dato_procesar;
         
         for (int i = 0; i < this.cantidad_ciclos(); i++){
-            if (this.cola_bmp.frente.info_bmp.valor_bmp >= this.cola_bmp.fondo.info_bmp.valor_bmp){
-                
-            }
+            if (this.cola_bmp.frente.info_bmp.valor_bmp > 100){
+                if (this.cola_bmp.frente.info_bmp.valor_bmp >= this.cola_bmp.fondo.info_bmp.valor_bmp){
+                    dato_procesar = this.cola_bmp.desencolarFrente().info_bmp;
+                }
+                else{
+                    dato_procesar = this.cola_bmp.desencolarFondo().info_bmp;
+                }
+            } 
             else{
+                dato_procesar = this.cola_bmp.desencolarFrente().info_bmp;
             }
+            this.llenarServidor(dato_procesar, i);
         }
     }
 }
