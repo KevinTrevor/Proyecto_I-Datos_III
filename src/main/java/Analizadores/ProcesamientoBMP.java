@@ -123,26 +123,4 @@ public class ProcesamientoBMP {
             num_servidor++;
         }
     }
-    
-   /* public static void main(String[] args) throws Exception{
-        ProcesamientoBMP prueba = new ProcesamientoBMP();
-        
-        DatosBMP nuevo_BMP1 = new DatosBMP();
-        nuevo_BMP1.ingresarDatos("110", 1);
-        
-        DatosBMP nuevo_BMP2 = new DatosBMP();
-        nuevo_BMP2.ingresarDatos("107", 1);
-        
-        DatosBMP nuevo_BMP3 = new DatosBMP();
-        nuevo_BMP3.ingresarDatos("108", 1);
-        
-        prueba.cola_bmp.encolarFondo(nuevo_BMP1);
-        prueba.cola_bmp.encolarFondo(nuevo_BMP2);
-        prueba.cola_bmp.encolarFondo(nuevo_BMP3);
-        
-        prueba.procesarBMP();
-        
-        System.out.println(prueba.servidor1.dato_procesar.valor_bmp);
-       
-    }*/
 }
