@@ -33,16 +33,35 @@ public class ProcesamientoSueno{
     public void procesarSueno() throws Exception{
         switch (this.cola_sueno.frente.info_sueno.tipo_de_sueño){
             case 1:
+                if (this.servidor_Ligeros.estaDisponible()){
+                    this.servidor_Ligeros.asignar(this.cola_sueno.desencolarFrente().info_sueno);
+                }
+                else{
+                    this.cola_sueno.encolarFondo(this.cola_sueno.desencolarFrente().info_sueno);
+                }
                 break;
             
             case 2:
+                if (this.servidor_Pesados.estaDisponible()){
+                    this.servidor_Pesados.asignar(this.cola_sueno.desencolarFrente().info_sueno);
+                }
+                else{
+                    this.cola_sueno.encolarFondo(this.cola_sueno.desencolarFrente().info_sueno);
+                }
                 break;
             
             case 3:
-                break;
-                
+                if (this.servidor_REM.estaDisponible()){
+                    this.servidor_REM.asignar(this.cola_sueno.desencolarFrente().info_sueno);
+                }
+                else{
+                    this.cola_sueno.encolarFondo(this.cola_sueno.desencolarFrente().info_sueno);
+                }
+                break; 
         }
+    }
+    
+    public static void main(String[] args) {
         
-      
     }
 }
