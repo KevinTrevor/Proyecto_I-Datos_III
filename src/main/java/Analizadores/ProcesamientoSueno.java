@@ -30,11 +30,19 @@ public class ProcesamientoSueno{
         }
     }
     
-    public DatosSueno procesarSueno() throws Exception{
-        DatosSueno dia_evaluado = null;
+    public void procesarSueno() throws Exception{
+        switch (this.cola_sueno.frente.info_sueno.tipo_de_sueño){
+            case 1:
+                break;
+            
+            case 2:
+                break;
+            
+            case 3:
+                break;
+                
+        }
         
-        
-        
-        return dia_evaluado;
+      
     }
 }
