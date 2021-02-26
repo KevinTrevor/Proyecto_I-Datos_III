@@ -12,14 +12,16 @@ public class Main {
     public BloqueSueno datos_Sueno = new BloqueSueno();
     public BloquePasos datos_Pasos = new BloquePasos();
     
-    public ProcesamientoPasos registrador_Pasos = new ProcesamientoPasos();
-    public ProcesamientoBMP registrador_BMP = new ProcesamientoBMP();
-    public ProcesamientoSueno registrador_Sueno = new ProcesamientoSueno();
+    public ProcesamientoPasos analizador_Pasos = new ProcesamientoPasos();
+    public ProcesamientoBMP analizador_BMP = new ProcesamientoBMP();
+    public ProcesamientoSueno analizador_Sueno = new ProcesamientoSueno();
     
-    public Cola resultado_BMP;
-    public Cola resultado_Pasos;
-    public Cola resultado_Sueno;        
-            
+    public Cola cola_bloqueSueno = new Cola();
+    public Cola resultado_BMP = new Cola();
+    public Cola resultado_Pasos = new Cola();
+    public Cola resultado_Sueno = new Cola(); 
+    
+    public int contador_global = 0;
             
     public void procesamiento_de_datos() throws Exception {
         Scanner scan = new Scanner(new File("./data.txt"));
@@ -33,23 +35,41 @@ public class Main {
                 
                 switch (analisis){
                     case "#":
-                        this.registrador_BMP.asignarDatos(datos_BMP);
-                        this.registrador_Pasos.asignarDatos(datos_Pasos);
-                        this.registrador_Sueno.asignarDatos(datos_Sueno);
-                        
-                        while (!this.registrador_Pasos.pila_pasos.esVacio()){
-                            this.registrador_Pasos.procesamientoPasos();
+                        if (datos_Sueno.lleno == 1){
+                            this.cola_bloqueSueno.encolar(datos_Sueno);
+                            datos_Sueno.eliminarDatos();
                         }
                         
+                        this.analizador_Pasos.asignarDatos(datos_Pasos);
+                        this.analizador_BMP.asignarDatos(datos_BMP);
+                        if (this.analizador_Sueno.cola_sueno.esVacio()){
+                                this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolar().info_bloqueSueno);
+                            }
+                        for (int i = 0; i < 5; i++){    
+                            this.analizador_Sueno.procesarSueno();
+                            
+                            this.contador_global++;
+                        }    
+                      
                         
-                        while (!this.registrador_Pasos.historial.esVacio()){
-                            Nodo res = this.registrador_Pasos.historial.desencolar();
+                        
+                        break;
+                        
+                    case "0 0":
+                        
+                        this.analizador_Pasos.asignarDatos(datos_Pasos);
+                        
+                        while (!analizador_Pasos.cola_procesamiento.esVacio()){
+                            resultado_Pasos.encolar(this.analizador_Pasos.procesarPasos());
+                            
+                            this.contador_global++;
+                        }
+                        
+                        System.out.println("PASOS");
+                        while (!this.resultado_Pasos.esVacio()){
+                            Nodo res = this.resultado_Pasos.desencolar();
                             System.out.println(res.info_pasos.dia +", "+res.info_pasos.pasos_dados+", "+res.info_pasos.mejor_diaAnterior);
                         }
-                        break;
-                    case "0 0":
-                        System.out.println("Fin");
-                        System.out.println(line);
                         break;
                 }                
             }
@@ -61,7 +81,6 @@ public class Main {
                         break;
                     
                     case "SUENO":
-                        
                         this.datos_Sueno.obtenerDatos(line);
                         break;
                     

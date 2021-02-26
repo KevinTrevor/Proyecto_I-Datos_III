@@ -6,8 +6,18 @@ import Estructuras_de_Datos.*;
  */
 public class ProcesamientoBMP {
     /** Atributos de la Clase ProcesamientoBMP*/
-    Dipolo cola_bmp = new Dipolo();
-    Cola resultado = new Cola();
+    Dipolo cola_bmp;
+    
+    ServidorBMP servidor1;
+    ServidorBMP servidor2;
+    ServidorBMP servidor3;
+    
+    public ProcesamientoBMP(){
+        this.cola_bmp = new Dipolo();
+        this.servidor1 = new ServidorBMP();
+        this.servidor2 = new ServidorBMP();
+        this.servidor3 = new ServidorBMP();
+    }
     
     public void asignarDatos(BloqueBMP bloque) throws Exception{
         /** Método que transforma y asigna datos a los atributos*/
@@ -21,5 +31,9 @@ public class ProcesamientoBMP {
             nuevo_bmp.ingresarDatos(bloque.datos_BMP[i], dia_bmp);
             this.cola_bmp.encolarFondo(nuevo_bmp);
         }
+    }
+    
+    public void procesarBMP(){
+        
     }
 }

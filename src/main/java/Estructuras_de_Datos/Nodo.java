@@ -17,6 +17,7 @@ public class Nodo {
     public DatosBMP info_bmp;
     public DatosSueno info_sueno;
     public BloqueSueno info_bloqueSueno;
+    public Cola info_cola;
 
     /** Métodos de la Clase Nodo */
     public Nodo(){
@@ -41,6 +42,10 @@ public class Nodo {
     
     public void ingresar(BloqueSueno datos){
         this.info_bloqueSueno = datos;
+    }
+    
+    public void ingresar(Cola datos){
+        this.info_cola = datos;
     }
    
 }    

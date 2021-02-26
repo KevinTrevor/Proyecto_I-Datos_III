@@ -5,9 +5,13 @@ import Estructuras_de_Datos.*;
  */
 public class ProcesamientoPasos{
     /** Atributos de la Clase ProcesamientoPasos*/
-    Cola pila_pasos = new Cola();
-    Cola historial = new Cola();
-    Dipolo mejor_dia = new Dipolo();
+    Cola cola_procesamiento;
+    Dipolo mejor_dia;
+    
+    public ProcesamientoPasos(){
+        this.cola_procesamiento = new Cola();
+        this.mejor_dia = new Dipolo();
+    }
     
     public void asignarDatos(BloquePasos bloque)throws Exception{
         /** Método que transforma y asigna datos a los atributos*/
@@ -17,7 +21,7 @@ public class ProcesamientoPasos{
         for (int i=0; i < (dia_fin + 1) - dia_inicio; i++){
             DatosPasos nuevo_paso = new DatosPasos();
             nuevo_paso.ingresarDatos(bloque.datos_Pasos[i].trim(), dia_inicio + i);
-            pila_pasos.encolar(nuevo_paso);
+            cola_procesamiento.encolar(nuevo_paso);
         }
     }
     
@@ -46,8 +50,8 @@ public class ProcesamientoPasos{
         return seleccion;
     }
     
-    public DatosPasos procesamientoPasos() throws Exception{
-        DatosPasos dia_evaluado = this.pila_pasos.desencolar().info_pasos;
+    public DatosPasos procesarPasos() throws Exception{
+        DatosPasos dia_evaluado = this.cola_procesamiento.desencolar().info_pasos;
         
         if (!this.mejor_dia.esVacio()){
             dia_evaluado.mejor_diaAnterior = seleccionar_MejorDia(dia_evaluado.pasos_dados);

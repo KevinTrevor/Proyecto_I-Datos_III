@@ -4,9 +4,13 @@ package Analizadores;
     @author Kevin Rojas
  */
 public class ServidorSueno extends Servidor{
-    DatosSueno dato_procesar = null;
-    int tiempo_procesamiento = -1;
-           
+    DatosSueno dato_procesar;
+    int tiempo_procesamiento;
+    
+    public ServidorSueno(){
+        this.dato_procesar = null;
+        this.tiempo_procesamiento = -1;
+    }
     @Override
     public boolean estaDisponible(){
         return this.dato_procesar == null;

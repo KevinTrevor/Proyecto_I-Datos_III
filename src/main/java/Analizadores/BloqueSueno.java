@@ -7,6 +7,7 @@ public class BloqueSueno extends Bloque {
     /** Atributos de la Clase BloqueSueño*/
     String[] datos_Sueno;
     String[] datos_dia;
+    int lleno = 0;
     
     @Override
     public void obtenerDatos(String datos){
@@ -18,6 +19,11 @@ public class BloqueSueno extends Bloque {
             this.datos_dia = datos.split(",");
         }
         
+        this.lleno = 1;
+    }
+    
+    public void eliminarDatos(){
+        this.lleno = 0;
     }
     
     public int getSize(){

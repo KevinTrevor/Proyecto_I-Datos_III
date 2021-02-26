@@ -108,6 +108,25 @@ public class Cola {
         }   
     }
     
+    public void encolar(Cola datos) throws Exception{
+        if(!estaLleno()){
+            Nodo nuevo_nodo = new Nodo();
+            nuevo_nodo.ingresar(datos);
+            if (!esVacio()){
+                fondo.siguiente = nuevo_nodo;
+                size++;
+            }
+            else{
+                frente = nuevo_nodo;
+                size++;
+            }
+            fondo = nuevo_nodo;
+        }
+        else{
+            throw new Exception("Cola Llena");  
+        }   
+    }
+    
     public Nodo desencolar() throws Exception{
         Nodo nodo_retorno;
         if(esVacio()){

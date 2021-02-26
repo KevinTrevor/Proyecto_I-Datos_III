@@ -5,7 +5,19 @@ import Estructuras_de_Datos.*;
  */
 public class ProcesamientoSueno{
     /** Atributos de la Clase RegistroSueño*/
-    Dipolo cola_sueno = new Dipolo();
+    Dipolo cola_sueno;
+    
+    ServidorSueno servidor_Ligeros;
+    ServidorSueno servidor_Pesados;
+    ServidorSueno servidor_REM;
+    
+    public ProcesamientoSueno(){
+        this.cola_sueno = new Dipolo();
+        
+        this.servidor_Ligeros = new ServidorSueno();
+        this.servidor_Pesados = new ServidorSueno();
+        this.servidor_REM = new ServidorSueno();
+    }
     
     public void asignarDatos(BloqueSueno bloque) throws Exception{
         /** Método que transforma y asigna datos a los atributos*/
@@ -18,8 +30,10 @@ public class ProcesamientoSueno{
         }
     }
     
-    public DatosSueno procesamientoSueno() throws Exception{
-        DatosSueno dia_evaluado = this.cola_sueno.desencolarFrente().info_sueno;
+    public DatosSueno procesarSueno() throws Exception{
+        DatosSueno dia_evaluado = null;
+        
+        
         
         return dia_evaluado;
     }
