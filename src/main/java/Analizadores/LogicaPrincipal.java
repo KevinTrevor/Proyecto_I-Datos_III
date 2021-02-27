@@ -258,7 +258,7 @@ public class LogicaPrincipal {
         LogicaPrincipal main = new LogicaPrincipal();
         
         main.iniciar_procesamiento();
-        System.out.println(main.resultado_Sueno.size);
+        
         main.imprimirResultado();
     }
 }
