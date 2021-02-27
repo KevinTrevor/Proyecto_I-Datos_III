@@ -4,9 +4,13 @@ package Analizadores;
     @author Kevin Rojas
  */
 public class ServidorBMP extends Servidor{
-    DatosBMP dato_procesar = null;
-    int tiempo_procesamiento = -1;
-           
+    DatosBMP dato_procesar;
+    int tiempo_procesamiento;
+    
+    public ServidorBMP(){
+        this.dato_procesar = null;
+        this.tiempo_procesamiento = -1;
+    }
     @Override
     public boolean estaDisponible(){
         return this.dato_procesar == null;

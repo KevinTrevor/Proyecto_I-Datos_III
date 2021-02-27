@@ -22,5 +22,13 @@ public class BloqueBMP extends Bloque{
     public int getSize(){
         return this.datos_BMP.length;
     }
+    
+    public static void main(String[] args) {
+        BloqueBMP prueba = new BloqueBMP();
+        
+        prueba.obtenerDatos("10 20 110 200");
+        
+        System.out.println(prueba.datos_BMP[0]);
+    }
 }
 
