@@ -10,7 +10,7 @@ Para Sueño: primero se toman los datos pertenecientes al bloque de Sueño (medi
 
 Para Pasos: primero se toman los datos pertenecientes del bloque de Pasos (mediante lecturas secuenciales al archivo, siempre que pertenezcan a PASOS), acto seguido se guardan en una cola para su posterior analisis en el sistema.
 
-Para BMP:primero se toman los datos pertenecientes del bloque de Pasos (mediante lecturas secuenciales al archivo, siempre que pertenezcan a BMP), acto seguido se guardan en una cola para su posterior analisis en el sistema.
+Para BMP: primero se toman los datos pertenecientes del bloque de Pasos (mediante lecturas secuenciales al archivo, siempre que pertenezcan a BMP), acto seguido se guardan en una cola para su posterior analisis en el sistema.
 
 Cuando el documento lee #, significa que se tomará 5 minutos para parar y procesar algunos datos en los bloques previamente leídos.
 
