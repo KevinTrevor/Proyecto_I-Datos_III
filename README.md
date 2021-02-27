@@ -19,12 +19,22 @@ Cuando el documento lee 0 0, significa que ha llegado al fin del archivo y se an
 # Reglas del documento de entrada
 
 Para Pasos: Los pasos tienen la estructura 'valor_total_pasos' ydeben estar separados por un ",".
-
+	
+	PASOS
+	dia_inicio, dia_fin
+	valor_total_pasos1 valor_total_pasos2 ... valor_total_pasosN  
 
 Para Sueño: Los sueños tienen la estructura 'tiempo_inicio-tiempo_fin-tipo_sueño' y se separan con un " ".
 
-Para BMP: 
+	SUENO
+	Día_inicio, Día_fin
+	minuto_inicio-minuto-fin-tipo_sueño1 minuto_inicio-minuto-fin-tipo_sueño2 ... minuto_inicio-minuto-fin-tipo_sueñoN
 
+Para BMP: Los BMP tienen la estructura 'valor_bmp' y se separan por un " ".
+
+	BMP
+	dia, minuto_inicio, minuto_fin 
+	valor_bmp1 valor_bmp2 ... valor_bmpN
 # Salida del proyecto
 
 PASOS
