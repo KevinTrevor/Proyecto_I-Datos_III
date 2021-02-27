@@ -68,7 +68,7 @@ public class LogicaPrincipal {
     }
     public void analisisBMP() throws Exception{
         if (!this.analizador_BMP.servidor1.estaDisponible()){
-                this.resultado_BMP.encolar(this.analizador_BMP.servidor1.retirar());
+            this.resultado_BMP.encolar(this.analizador_BMP.servidor1.retirar());
         }    
                             
         if (!this.analizador_BMP.servidor2.estaDisponible()){    
@@ -109,7 +109,7 @@ public class LogicaPrincipal {
         
         while (!cola_suenos_analizada.esVacio()){
             DatosSueno sueno_analizado = cola_suenos_analizada.desencolar().info_sueno;
-            
+            System.out.println(sueno_analizado.tiempo_inicio+"-"+sueno_analizado.tiempo_fin+"-"+sueno_analizado.tipo_de_sueno+" = "+sueno_analizado.tiempo_total_dormido);
             if (cola_suenos_analizada.esVacio()){
                 this.dia = sueno_analizado.dia;
                 this.duracion_ultimo_registro_enviado = sueno_analizado.tiempo_total_dormido;
@@ -164,9 +164,7 @@ public class LogicaPrincipal {
                             
                             this.analisisBMP();
                             this.analisisSueno();
-                            
-                            
-                            this.analizador_BMP.procesarBMP();
+                            this.analisisPasos();
                             
                             if (this.analizador_Sueno.todos_servidoresDisponibles() && this.analizador_Sueno.cola_sueno.esVacio()){
                                 Cola nueva_cola = new Cola();
@@ -220,6 +218,22 @@ public class LogicaPrincipal {
             System.out.println(this.dia+", "+this.duracion_total_Suenos+", "+this.total_duracion_Ligeros+", "+this.total_duracion_Pesados+", "+this.total_duracion_REM+", "+this.duracion_ultimo_registro_enviado);
         }
         System.out.println("\nBMP");
+        String res_bmp = "";
+        while (!this.resultado_BMP.esVacio()){
+            int valor_bmp_resultado = this.resultado_BMP.desencolar().info_bmp.valor_bmp;
+            if (res_bmp == ""){
+                res_bmp = "["+valor_bmp_resultado+", ";
+            }
+            else{
+                if (!this.resultado_BMP.esVacio()){
+                    res_bmp = res_bmp + valor_bmp_resultado + ", ";
+                }
+                else{
+                    res_bmp = res_bmp + valor_bmp_resultado + "]";
+                }
+            }
+        }
+        System.out.println(res_bmp);
         
     }
     
