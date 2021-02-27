@@ -6,9 +6,9 @@ Este proyecto analiza un documento ('data.txt') mediante funciones específicas 
 
 Para Sueño: primero se toman los datos pertenecientes al bloque de Sueño (mediante lecturas secuenciales al archivo, siempre que pertenezcan a SUENO), acto seguido se guardan en una cola para su posterior analisis en el sistema.
 
-Para Pasos
+Para Pasos: primero se toman los datos pertenecientes del bloque de Pasos (mediante lecturas secuenciales al archivo, siempre que pertenezcan a PASOS), acto seguido se guardan en una cola para su posterior analisis en el sistema.
 
-Para BMP:
+Para BMP:primero se toman los datos pertenecientes del bloque de Pasos (mediante lecturas secuenciales al archivo, siempre que pertenezcan a BMP), acto seguido se guardan en una cola para su posterior analisis en el sistema.
 
 Cuando el documento lee #, significa que se tomará 5 minutos para parar y procesar algunos datos en los bloques previamente leídos.
 
