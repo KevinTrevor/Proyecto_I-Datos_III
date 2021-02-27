@@ -28,7 +28,7 @@ public class ProcesamientoBMP {
         int minuto_inicio = Integer.parseInt(bloque.datos_dia[1].trim());
         int minuto_fin = Integer.parseInt(bloque.datos_dia[2].trim());
         
-        for (int i= 0; i < minuto_fin - minuto_inicio; i++){
+        for (int i= 0; i < bloque.getSize(); i++){
             DatosBMP nuevo_bmp = new DatosBMP();
             nuevo_bmp.ingresarDatos(bloque.datos_BMP[i], dia_bmp);
             this.cola_bmp.encolarFondo(nuevo_bmp);
