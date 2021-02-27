@@ -1,8 +1,14 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 
 /**
  *
- * @author Kevin Rojas
+ * @author Kevin Rojas and Nestor Aguilar
  */
 public class BloquePasos extends Bloque{
     /** Atributos de la Clase BloquePasos*/
@@ -21,6 +27,7 @@ public class BloquePasos extends Bloque{
     }
     
     public int getSize(){
+        /** Método que retorna el tamaño del arreglo datos_Pasos*/
         return this.datos_Pasos.length;
     }
 }

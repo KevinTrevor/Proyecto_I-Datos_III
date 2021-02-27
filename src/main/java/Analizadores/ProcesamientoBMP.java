@@ -20,6 +20,7 @@ public class ProcesamientoBMP {
     ServidorBMP servidor3;
     
     public ProcesamientoBMP(){
+        /** Método Constructor de la Clase ProcesamientoBMP*/
         this.cola_bmp = new Dipolo();
         this.ordenamiento = new Dipolo();
         this.servidor1 = new ServidorBMP();
@@ -40,6 +41,9 @@ public class ProcesamientoBMP {
     }
     
     public int cantidad_ciclos(){
+        /** Método que retorna la cantidad de ciclos que deben hacerse en el procesamiento
+         3 si es mayor o igual a 3
+         cola_bmp.size si es menor que 3 */
         int ciclos;
         
         if (this.cola_bmp.size >= 3){
@@ -52,6 +56,7 @@ public class ProcesamientoBMP {
     }
     
     public void ordenarDatos(DatosBMP nuevo_dato) throws Exception{
+        /** Método que ordena los datos BMP si su valor es mayor que 100*/
        if (this.ordenamiento.esVacio()){
            this.ordenamiento.encolarFrente(nuevo_dato);
        }
@@ -78,6 +83,7 @@ public class ProcesamientoBMP {
     }
     
     public void llenarServidor(DatosBMP dato_procesar, int num_servidor){
+        /** Método que asigna un DatosBMP a un servidor*/
         switch (num_servidor){
                 case 0:
                     this.servidor1.asignar(dato_procesar);
@@ -94,10 +100,14 @@ public class ProcesamientoBMP {
     }
     
     public boolean servidoresLlenos(){
+        /** Método que devuelve un booleano si los servidores están llenos
+         true si lo están
+         false si no lo están*/
         return (!this.servidor1.estaDisponible() && !this.servidor2.estaDisponible() && !this.servidor3.estaDisponible());
     }
     
     public void procesarBMP() throws Exception{
+        /** Método que procesa la cola_bmp llena de DatosBMP y llena los servidores*/
         DatosBMP dato_procesar;
         int num_servidor = 0;
         int num_ciclo = this.cantidad_ciclos();

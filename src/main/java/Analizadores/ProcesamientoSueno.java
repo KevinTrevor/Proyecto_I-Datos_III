@@ -26,6 +26,9 @@ public class ProcesamientoSueno{
     }
     
     public boolean todos_servidoresDisponibles(){
+        /** Método que retorno un booleano si los servidores están disponibles
+         true si lo están
+         false si no lo están*/
         return this.servidor_Ligeros.estaDisponible() && this.servidor_Pesados.estaDisponible() && this.servidor_REM.estaDisponible();
     }
     public void asignarDatos(BloqueSueno bloque) throws Exception{
@@ -40,6 +43,7 @@ public class ProcesamientoSueno{
     }
     
     public void procesarSueno() throws Exception{
+        /** Método que procesa los DatosSueno dentro cola_sueno y los asigna a un servidor*/
         switch (this.cola_sueno.frente.info_sueno.tipo_de_sueno){
             case 1:
                 if (this.servidor_Ligeros.estaDisponible()){
@@ -71,6 +75,7 @@ public class ProcesamientoSueno{
     }
     
     public void reducir_tiempoServidores(){
+        /** Método que reduce el tiempo de los servidores en 1*/
         if (!this.servidor_Ligeros.estaDisponible()){
             if (this.servidor_Ligeros.duracion_procesamiento != 0){
                 this.servidor_Ligeros.duracion_procesamiento--;

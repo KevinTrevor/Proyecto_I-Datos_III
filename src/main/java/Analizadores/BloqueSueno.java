@@ -28,11 +28,8 @@ public class BloqueSueno extends Bloque {
         this.lleno = 1;
     }
     
-    public void eliminarDatos(){
-        this.lleno = 0;
-    }
-    
     public int getSize(){
+        /** Método que devuelve el tamaño de datos_Sueno*/
         return this.datos_Sueno.length;
     }
 }

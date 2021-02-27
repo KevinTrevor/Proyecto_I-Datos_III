@@ -1,7 +1,13 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 
 /**
-    @author Kevin Rojas
+    @author Kevin Rojas and Nestor Aguilar
  */
 public class DatosBMP extends Datos{
     /** Atributos de la Clase DatosBMP*/
@@ -19,7 +25,6 @@ public class DatosBMP extends Datos{
     @Override
     public void ingresarDatos(String datos, int dia){
         /** Método que transforma y asigna datos a los atributos*/
-        
         this.valor_bmp = Integer.parseInt(datos.trim());
         this.dia = dia;
     }
