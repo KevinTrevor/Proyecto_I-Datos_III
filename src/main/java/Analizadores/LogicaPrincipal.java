@@ -109,7 +109,7 @@ public class LogicaPrincipal {
         
         while (!cola_suenos_analizada.esVacio()){
             DatosSueno sueno_analizado = cola_suenos_analizada.desencolar().info_sueno;
-            System.out.println(sueno_analizado.tiempo_inicio+"-"+sueno_analizado.tiempo_fin+"-"+sueno_analizado.tipo_de_sueno+" = "+sueno_analizado.tiempo_total_dormido);
+            
             if (cola_suenos_analizada.esVacio()){
                 this.dia = sueno_analizado.dia;
                 this.duracion_ultimo_registro_enviado = sueno_analizado.tiempo_total_dormido;
