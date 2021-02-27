@@ -1,9 +1,15 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 
 import Estructuras_de_Datos.Cola;
 
 /**
-    @author Kevin Rojas
+    @author Kevin Rojas and Nestor Aguilar
  */
 public class DatosSueno extends Datos{
     /** Atributos de la Clase DatosSueño*/

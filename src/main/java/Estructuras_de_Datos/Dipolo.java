@@ -32,26 +32,6 @@ public class Dipolo {
         return this.size == this.limite;
     }
     
-    public void encolarFondo(BloqueSueno info) throws Exception{
-        if (!estaLleno()){
-            Nodo nuevo_nodo = new Nodo();
-            nuevo_nodo.ingresar(info);
-            if (!esVacio()){
-                this.fondo.siguiente = nuevo_nodo;
-                this.fondo = this.fondo.siguiente;
-                
-            }
-            else{
-                this.frente = nuevo_nodo;
-                this.fondo = this.frente;
-            }
-            this.size++;
-        }
-        else{
-            throw new Exception("Dipolo lleno");
-        }
-    }
-    
     public void encolarFondo(DatosSueno info) throws Exception{
         if (!estaLleno()){
             Nodo nuevo_nodo = new Nodo();

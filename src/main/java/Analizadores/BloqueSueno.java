@@ -1,7 +1,13 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 
 /**
-    @author Kevin Rojas
+    @author Kevin Rojas and Nestor Aguilar
  */
 public class BloqueSueno extends Bloque {
     /** Atributos de la Clase BloqueSueño*/
@@ -28,17 +34,5 @@ public class BloqueSueno extends Bloque {
     
     public int getSize(){
         return this.datos_Sueno.length;
-    }
-    public static void main(String[] args) throws Exception{
-        BloqueSueno prueba = new BloqueSueno();
-        ProcesamientoSueno prueba_app = new ProcesamientoSueno();
-        
-        prueba.obtenerDatos("43,44");
-        prueba.obtenerDatos("1320-1400-1 1401-100-2 101-200-3 201-250-1 251-350-2 351-351-1 352-400-1 401-420-3");
-        
-        prueba_app.asignarDatos(prueba);
-        while (!prueba_app.cola_sueno.esVacio()){
-            System.out.println(prueba_app.cola_sueno.desencolarFrente().info_sueno.tiempo_total_dormido);
-        }    
     }
 }

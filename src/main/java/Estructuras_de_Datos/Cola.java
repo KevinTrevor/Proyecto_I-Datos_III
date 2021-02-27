@@ -32,11 +32,6 @@ public class Cola {
         return size == limite;
     }
     
-    public void eliminarCola(){
-        this.frente = null;
-        this.fondo = null;
-        this.size = 0;
-    }
     public void encolar(DatosSueno datos) throws Exception{
         if(!estaLleno()){
             Nodo nuevo_nodo = new Nodo();

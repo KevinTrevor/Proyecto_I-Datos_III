@@ -1,7 +1,13 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 import Estructuras_de_Datos.*;
 /**
-    @author Kevin Rojas
+    @author Kevin Rojas and Nestor Aguilar
  */
 public class ProcesamientoSueno{
     /** Atributos de la Clase RegistroSueño*/
@@ -82,69 +88,5 @@ public class ProcesamientoSueno{
                 this.servidor_REM.duracion_procesamiento--;
             }  
         }
-    }
-    
-    public static void main(String[] args) throws Exception{
-        DatosSueno nuevo_Sueno1 = new DatosSueno();
-        DatosSueno nuevo_Sueno2 = new DatosSueno();
-        DatosSueno nuevo_Sueno3 = new DatosSueno();
-        DatosSueno nuevo_Sueno4 = new DatosSueno();
-        DatosSueno nuevo_Sueno5 = new DatosSueno();
-        DatosSueno nuevo_Sueno6 = new DatosSueno();
-        Cola nueva_cola = new Cola();
-        Cola nueva_resultados = new Cola();
-        ProcesamientoSueno nueva_prueba = new ProcesamientoSueno();
-        
-        nuevo_Sueno1.ingresarDatos("1320-1400-2", 1);
-        nuevo_Sueno2.ingresarDatos("1401-100-3", 1);
-        nuevo_Sueno3.ingresarDatos("101-140-1", 1);
-        nuevo_Sueno4.ingresarDatos("141-250-3", 1);
-        nuevo_Sueno5.ingresarDatos("251-500-1", 1);
-        nuevo_Sueno6.ingresarDatos("501-700-2", 1);
-        
-        nueva_prueba.cola_sueno.encolarFrente(nuevo_Sueno1);
-        nueva_prueba.cola_sueno.encolarFrente(nuevo_Sueno2);
-        nueva_prueba.cola_sueno.encolarFrente(nuevo_Sueno3);
-        nueva_prueba.cola_sueno.encolarFrente(nuevo_Sueno4);
-        nueva_prueba.cola_sueno.encolarFrente(nuevo_Sueno5);
-        nueva_prueba.cola_sueno.encolarFrente(nuevo_Sueno6);
-        
-        
-        boolean terminado = false;
-        while (!terminado){
-           if (!nueva_prueba.cola_sueno.esVacio()){
-               System.out.println(nueva_prueba.cola_sueno.size);
-               nueva_prueba.procesarSueno();
-           }
-           nueva_prueba.reducir_tiempoServidores();
-          
-            if (nueva_prueba.servidor_Ligeros.duracion_procesamiento == 0){
-                nueva_cola.encolar(nueva_prueba.servidor_Ligeros.retirar());
-            }
-            
-            
-            if (nueva_prueba.servidor_Pesados.duracion_procesamiento == 0){
-                nueva_cola.encolar(nueva_prueba.servidor_Pesados.retirar());
-            }
-            
-            
-            if (nueva_prueba.servidor_REM.duracion_procesamiento == 0){
-                nueva_cola.encolar(nueva_prueba.servidor_REM.retirar());
-            }
-           
-            
-            if (nueva_prueba.todos_servidoresDisponibles()){
-                terminado = true;
-            }
-        }    
-        nueva_resultados.encolar(nueva_cola);
-        System.out.println(nueva_resultados.size);
-        
-        while (!nueva_resultados.esVacio()){
-            Cola aux = nueva_resultados.desencolar().info_cola;
-            while (!aux.esVacio()){
-                System.out.println("Tiempo total: "+aux.desencolar().info_sueno.tiempo_total_dormido);
-            }    
-        }    
     }
 }

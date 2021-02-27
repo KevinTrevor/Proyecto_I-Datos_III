@@ -1,3 +1,9 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 
 import Estructuras_de_Datos.*;
@@ -5,7 +11,7 @@ import java.io.File;
 import java.util.Scanner;
 
 /**
-    @author Kevin Rojas y Nestor Aguilar
+    @author Kevin Rojas and Nestor Aguilar
  */
 public class LogicaPrincipal {
     /** Atributos de la clase Main*/
@@ -221,7 +227,7 @@ public class LogicaPrincipal {
         String res_bmp = "";
         while (!this.resultado_BMP.esVacio()){
             int valor_bmp_resultado = this.resultado_BMP.desencolar().info_bmp.valor_bmp;
-            if (res_bmp == ""){
+            if ("".equals(res_bmp)){
                 res_bmp = "["+valor_bmp_resultado+", ";
             }
             else{

@@ -1,8 +1,14 @@
+/*
+    Asignatura: Algoritmos y Estructuras de Datos III
+    Hecho por: Kevin Rojas y Nestor Aguilar
+    C.I: 29.582.382 y 28.316.308
+    Email: kevintrevor0905@gmail.com y 
+ */
 package Analizadores;
 import Estructuras_de_Datos.*;
 
 /**
-    @author Kevin Rojas
+    @author Kevin Rojas and Nestor Aguilar
  */
 public class ProcesamientoBMP {
     /** Atributos de la Clase ProcesamientoBMP*/
@@ -25,8 +31,6 @@ public class ProcesamientoBMP {
         /** Método que transforma y asigna datos a los atributos*/
         
         int dia_bmp = Integer.parseInt(bloque.datos_dia[0].trim());
-        int minuto_inicio = Integer.parseInt(bloque.datos_dia[1].trim());
-        int minuto_fin = Integer.parseInt(bloque.datos_dia[2].trim());
         
         for (int i= 0; i < bloque.getSize(); i++){
             DatosBMP nuevo_bmp = new DatosBMP();
