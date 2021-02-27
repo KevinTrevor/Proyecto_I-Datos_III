@@ -192,11 +192,4 @@ public class Dipolo {
         }
         return nodo_retorno;
     }
-    
-    public static void main(String[] args) throws Exception{
-        DatosBMP nuevo_valor = new DatosBMP();
-        Dipolo nuevo_dipolo = new Dipolo();
-        
-        nuevo_dipolo.encolarFondo(nuevo_valor);
-    }
 }

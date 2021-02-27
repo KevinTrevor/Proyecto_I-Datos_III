@@ -102,7 +102,12 @@ public class LogicaPrincipal {
         /** Método que agrega los datos de los bloques a los analizadores*/
         this.analizador_Pasos.asignarDatos(this.bloqueDatos_Pasos);
         this.analizador_BMP.asignarDatos(this.bloqueDatos_BMP);
-        this.cola_bloqueSueno.encolar(bloqueDatos_Sueno);
+        if (this.bloqueDatos_Sueno.getSize() > 0){
+            BloqueSueno nuevo_sueno = new BloqueSueno();
+            nuevo_sueno.datos_Sueno = this.bloqueDatos_Sueno.datos_Sueno;
+            nuevo_sueno.datos_dia = this.bloqueDatos_Sueno.datos_dia;
+            this.cola_bloqueSueno.encolar(nuevo_sueno);
+        }
         
         if (this.analizador_Sueno.cola_sueno.esVacio()){
             this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolar().info_bloqueSueno);
@@ -145,7 +150,7 @@ public class LogicaPrincipal {
     
     public void iniciar_procesamiento() throws Exception {
         /** Método que inicia el procesamiento del archivo data.txt*/
-        String archivo = "./data.txt";
+        String archivo = "./data1.txt";
         Scanner scan = new Scanner(new File(archivo));
         String analisis = null;
         
@@ -159,6 +164,7 @@ public class LogicaPrincipal {
                 switch (analisis){
                     case "#":
                         this.agregarBloques();
+                        
                         for (int i = 0; i < 5; i++){
                             this.analisisBMP();
                             this.analisisSueno();
@@ -169,9 +175,7 @@ public class LogicaPrincipal {
                     case "0 0":
                         this.agregarBloques();
                         boolean terminado = false;
-                        if (this.analizador_Sueno.cola_sueno.esVacio()){
-                            this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolar().info_bloqueSueno);
-                        }    
+                        
                         while(!terminado){
                             
                             this.analisisBMP();
@@ -254,7 +258,7 @@ public class LogicaPrincipal {
         LogicaPrincipal main = new LogicaPrincipal();
         
         main.iniciar_procesamiento();
-        
+        System.out.println(main.resultado_Sueno.size);
         main.imprimirResultado();
     }
 }
