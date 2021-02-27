@@ -33,7 +33,7 @@ public class DatosSueno extends Datos{
         int contador = this.minuto_inicio;
         
         while (contador != this.minuto_fin){
-            if (contador == 1439){
+            if (contador == 1440){
                 contador = 1;
             }
             else{
