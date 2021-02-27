@@ -150,7 +150,7 @@ public class LogicaPrincipal {
     
     public void iniciar_procesamiento() throws Exception {
         /** Método que inicia el procesamiento del archivo data.txt*/
-        String archivo = "./data1.txt";
+        String archivo = "./data.txt";
         Scanner scan = new Scanner(new File(archivo));
         String analisis = null;
         
