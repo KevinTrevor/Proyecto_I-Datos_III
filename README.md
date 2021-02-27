@@ -22,7 +22,7 @@ Para Pasos: Los pasos tienen la estructura 'valor_total_pasos' ydeben estar sepa
 	
 	PASOS
 	dia_inicio, dia_fin
-	valor_total_pasos1 valor_total_pasos2 ... valor_total_pasosN  
+	valor_total_pasos1, valor_total_pasos2, ..., valor_total_pasosN  
 
 Para Sueño: Los sueños tienen la estructura 'tiempo_inicio-tiempo_fin-tipo_sueño' y se separan con un " ".
 

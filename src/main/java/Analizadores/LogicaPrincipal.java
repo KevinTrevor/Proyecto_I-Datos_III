@@ -2,7 +2,7 @@
     Asignatura: Algoritmos y Estructuras de Datos III
     Hecho por: Kevin Rojas y Nestor Aguilar
     C.I: 29.582.382 y 28.316.308
-    Email: kevintrevor0905@gmail.com y 
+    Email: kevintrevor0905@gmail.com y nestor.gar22194@gmail.com
  */
 package Analizadores;
 import Estructuras_de_Datos.*;
@@ -13,7 +13,7 @@ import java.util.Scanner;
     @author Kevin Rojas and Nestor Aguilar
  */
 public class LogicaPrincipal {
-    /** Atributos de la clase Main*/
+    /** Atributos de la clase LógicaPrincipal*/
     public BloqueBMP bloqueDatos_BMP;
     public BloqueSueno bloqueDatos_Sueno;
     public BloquePasos bloqueDatos_Pasos;
@@ -36,6 +36,7 @@ public class LogicaPrincipal {
     public int dia;
     
     public LogicaPrincipal(){
+        /** Método constructor de la clase LogicaPrincipal*/
         this.bloqueDatos_BMP = new BloqueBMP();
         this.bloqueDatos_Pasos = new BloquePasos();     
         this.bloqueDatos_Sueno = new BloqueSueno();
@@ -53,6 +54,7 @@ public class LogicaPrincipal {
         
     }
     public void analisisSueno() throws Exception{
+        /** Método que analiza los Suenos y reduce los tiempos de los servidoresSueno*/
         if (this.analizador_Sueno.servidor_Ligeros.duracion_procesamiento == 0){
             this.auxiliar_colaSueno.encolar(this.analizador_Sueno.servidor_Ligeros.retirar());
         }
@@ -72,6 +74,7 @@ public class LogicaPrincipal {
        }
     }
     public void analisisBMP() throws Exception{
+        /** Método que analiza los BMP y reduce los tiempos de los servidoresBMP*/
         if (!this.analizador_BMP.servidor1.estaDisponible()){
             this.resultado_BMP.encolar(this.analizador_BMP.servidor1.retirar());
         }    
@@ -89,12 +92,14 @@ public class LogicaPrincipal {
     }
     
     public void analisisPasos() throws Exception{
+        /** Método que analiza los Pasos */
         if (!this.analizador_Pasos.cola_procesamiento.esVacio()){
             this.resultado_Pasos.encolar(this.analizador_Pasos.procesarPasos());
         }
     }
     
     public void agregarBloques() throws Exception{
+        /** Método que agrega los datos de los bloques a los analizadores*/
         this.analizador_Pasos.asignarDatos(this.bloqueDatos_Pasos);
         this.analizador_BMP.asignarDatos(this.bloqueDatos_BMP);
         this.cola_bloqueSueno.encolar(bloqueDatos_Sueno);
@@ -105,6 +110,7 @@ public class LogicaPrincipal {
     }
     
     public void contador_Suenos(Cola cola_suenos_analizada) throws Exception{
+        /** Método que cuenta hace totalizaciones de duracion de los tipos de Sueno por bloque analizado*/
         this.dia = 0;
         this.duracion_total_Suenos = 0;
         this.total_duracion_Ligeros = 0;
@@ -138,6 +144,7 @@ public class LogicaPrincipal {
     }
     
     public void iniciar_procesamiento() throws Exception {
+        /** Método que inicia el procesamiento del archivo data.txt*/
         String archivo = "./data.txt";
         Scanner scan = new Scanner(new File(archivo));
         String analisis = null;
@@ -212,6 +219,7 @@ public class LogicaPrincipal {
     } 
     
     public void imprimirResultado() throws Exception{
+        /** Método que imprime en pantalla todos los datos resultados del procesamiento */
         System.out.println("PASOS");
         while (!this.resultado_Pasos.esVacio()){
             Nodo res = this.resultado_Pasos.desencolar();
