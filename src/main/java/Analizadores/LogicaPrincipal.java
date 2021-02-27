@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.Scanner;
 
 /**
-    @author Kevin Rojas
+    @author Kevin Rojas y Nestor Aguilar
  */
 public class LogicaPrincipal {
     /** Atributos de la clase Main*/
