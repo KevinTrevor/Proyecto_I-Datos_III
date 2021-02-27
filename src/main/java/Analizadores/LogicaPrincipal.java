@@ -59,6 +59,12 @@ public class LogicaPrincipal {
        if (this.analizador_Sueno.servidor_REM.duracion_procesamiento == 0){
             this.auxiliar_colaSueno.encolar(this.analizador_Sueno.servidor_REM.retirar());
         }
+       
+       this.analizador_Sueno.reducir_tiempoServidores();
+       
+       if (!this.analizador_Sueno.cola_sueno.esVacio()){
+            this.analizador_Sueno.procesarSueno();
+       }
     }
     public void analisisBMP() throws Exception{
         if (!this.analizador_BMP.servidor1.estaDisponible()){
@@ -72,6 +78,9 @@ public class LogicaPrincipal {
         if (!this.analizador_BMP.servidor3.estaDisponible()){    
             this.resultado_BMP.encolar(this.analizador_BMP.servidor3.retirar());
         }
+        if (!this.analizador_BMP.cola_bmp.esVacio()){
+            this.analizador_BMP.procesarBMP();
+        }
     }
     
     public void analisisPasos() throws Exception{
@@ -83,7 +92,11 @@ public class LogicaPrincipal {
     public void agregarBloques() throws Exception{
         this.analizador_Pasos.asignarDatos(this.bloqueDatos_Pasos);
         this.analizador_BMP.asignarDatos(this.bloqueDatos_BMP);
-        this.cola_bloqueSueno.encolarFondo(this.bloqueDatos_Sueno);
+        this.cola_bloqueSueno.encolarFondo(bloqueDatos_Sueno);
+        
+        if (this.analizador_Sueno.cola_sueno.esVacio()){
+            this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolarFrente().info_bloqueSueno);
+        }
     }
     
     public void contador_Suenos(Cola cola_suenos_analizada) throws Exception{
@@ -96,7 +109,9 @@ public class LogicaPrincipal {
         
         while (!cola_suenos_analizada.esVacio()){
             DatosSueno sueno_analizado = cola_suenos_analizada.desencolar().info_sueno;
+            System.out.println(sueno_analizado.tiempo_fin); //ELIMINAR
             if (cola_suenos_analizada.esVacio()){
+                this.dia = sueno_analizado.dia;
                 this.duracion_ultimo_registro_enviado = sueno_analizado.tiempo_total_dormido;
             }
             this.duracion_total_Suenos = this.duracion_total_Suenos + sueno_analizado.tiempo_total_dormido;
@@ -117,7 +132,7 @@ public class LogicaPrincipal {
         }
     }
     
-    public void procesamiento_de_datos() throws Exception {
+    public void iniciar_procesamiento() throws Exception {
         String archivo = "./data.txt";
         Scanner scan = new Scanner(new File(archivo));
         String analisis = null;
@@ -133,6 +148,8 @@ public class LogicaPrincipal {
                     case "#":
                         this.agregarBloques();
                         for (int i = 0; i < 5; i++){
+                            this.analisisBMP();
+                            this.analisisSueno();
                             
                         }
                         break;
@@ -140,16 +157,26 @@ public class LogicaPrincipal {
                     case "0 0":
                         this.agregarBloques();
                         boolean terminado = false;
-                        
-                        this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolarFrente().info_bloqueSueno);
+                        if (this.analizador_Sueno.cola_sueno.esVacio()){
+                            this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolarFrente().info_bloqueSueno);
+                        }    
                         while(!terminado){
-                            this.analizador_Sueno.reducir_tiempoServidores();
-                            this.analizador_Sueno.procesarSueno();
+                            
+                            this.analisisBMP();
                             this.analisisSueno();
                             
-                            if (this.analizador_Sueno.cola_sueno.esVacio()){
+                            
+                            this.analizador_BMP.procesarBMP();
+                            
+                            if (this.analizador_Sueno.todos_servidoresDisponibles() && this.analizador_Sueno.cola_sueno.esVacio()){
                                 this.resultado_Sueno.encolar(this.auxiliar_colaSueno);
-                                terminado = true;
+                                if (!this.cola_bloqueSueno.esVacio()){
+                                    this.analizador_Sueno.asignarDatos(cola_bloqueSueno.desencolarFrente().info_bloqueSueno);
+                                    this.auxiliar_colaSueno.eliminarCola();
+                                }
+                                else{
+                                    terminado = true;
+                                }
                             }
                         }
                         break;
@@ -177,6 +204,7 @@ public class LogicaPrincipal {
             }
         }
     } 
+    
     public void imprimirResultado() throws Exception{
         System.out.println("PASOS");
         while (!this.resultado_Pasos.esVacio()){
@@ -195,7 +223,7 @@ public class LogicaPrincipal {
     public static void main(String[] args) throws Exception{
         LogicaPrincipal main = new LogicaPrincipal();
         
-        main.procesamiento_de_datos();
+        main.iniciar_procesamiento();
         
         main.imprimirResultado();
     }
