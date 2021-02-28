@@ -12,12 +12,12 @@ package Analizadores;
 public class ServidorBMP extends Servidor{
     /** Atributos de la Clase ServidorBMP*/
     DatosBMP dato_procesar;
-    int tiempo_procesamiento;
+    int duracion_procesamiento;
     
     public ServidorBMP(){
         /** Método constructor de la Clase ServidorBMP*/
         this.dato_procesar = null;
-        this.tiempo_procesamiento = -1;
+        this.duracion_procesamiento = -1;
     }
     @Override
     public boolean estaDisponible(){
@@ -30,7 +30,7 @@ public class ServidorBMP extends Servidor{
     public void asignar(DatosBMP ingreso){
         /** Método que asigna un valor DatosBMP al servidor y asigna su duración de procesamiento*/
         this.dato_procesar = ingreso;
-        this.tiempo_procesamiento = 1;
+        this.duracion_procesamiento = 1;
     }
     
     public DatosBMP retirar(){
@@ -38,7 +38,7 @@ public class ServidorBMP extends Servidor{
          DatosBMP si hay uno 
          null si no lo hay*/
         DatosBMP retorno = this.dato_procesar;
-        this.tiempo_procesamiento = -1;
+        this.duracion_procesamiento = -1;
         this.dato_procesar = null;
         
         return retorno;
